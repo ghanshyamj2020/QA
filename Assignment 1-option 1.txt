@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+void main () {
+
+   /* Variables    */
+   int num, counter = 1, Clock; 
+   float wage , hours1, gross ;
+   printf("\n");
+   printf("***Pay Calculator***\n");
+   printf("\n");
+   printf("Enter number of employees to process:  ");
+   scanf("%d", &num);
+   while (counter <= num ) {
+          printf("\n");
+          printf("Enter Employee's Clock #: ");
+          scanf("%d", &Clock);
+          printf("Enter hourly wage: ");
+          scanf("%f", &wage);
+          printf("Enter number of hours worked: ");
+          scanf("%f", &hours1);
+          printf("\n");
+          printf("-----------------------------------------\n");
+          printf("Clock#  Wage  Hours Gross\n");
+          printf("-----------------------------------------\n");
+          
+          gross = wage * hours1;
+          
+          printf("%06d  %.2f %.1f %.2f", Clock, wage, hours1, gross);
+          printf("\n");
+          printf("\n");
+          counter = counter + 1;
+   }
+}   

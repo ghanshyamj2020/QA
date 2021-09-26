@@ -8,8 +8,8 @@
 // 
 // Date: 9/23/21 
 // 
-// Description: Program which uses arrays to determine gross 
-// pay and outputs be sent to the console.  
+// Description: Program which determine gross 
+// pay and over time outputs be sent to the console.  
 // 
 // 
 //******************************************************** 

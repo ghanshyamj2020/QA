@@ -26,10 +26,10 @@ int main()
 {
      float Over_time = 0.0 ;
     /* unique employee identifier */
-   int clockNumber [] = {98401, 526488, 765349, 34645, 127615};
+  long int clockNumber [] = {98401, 526488, 765349, 34645, 127615};
 
    /* hourly wage for each employee */        
-   float hourlyWage [] = {10.6, 9.75, 10.5, 12.25, 8.35};
+   float hourlyWage [] = {10.60, 9.75, 10.50, 12.25, 8.35};
   
   /* working hourse for each employee */
   float workhourse [] = {51.0, 42.5, 37.0, 45.0, 0.0}; 
@@ -65,7 +65,7 @@ void payrollcalc(int a, float b, float c)
    // calculate gross pay                  
         gross = overtime_pay + standard_pay ;  
                             
-        printf("    %6d  %5.2f   %5.1f    %5.1f    %6.2f", a, b, c, Over_time, gross);
+        printf("    %06d  %5.2f   %5.1f    %5.1f    %6.2f", a, b, c, Over_time, gross);
         printf("\n");
                       
           }  else {
@@ -76,7 +76,7 @@ void payrollcalc(int a, float b, float c)
         overtime_pay = b * SOT_PAY * Over_time;  
               
         gross = overtime_pay + standard_pay;
-        printf("    %6d  %5.2f   %5.1f    %5.1f    %6.2f", a, b, c, Over_time, gross);
+        printf("    %06d  %5.2f   %5.1f    %5.1f    %6.2f", a, b, c, Over_time, gross);
         printf("\n");
 
      }

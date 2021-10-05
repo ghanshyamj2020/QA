@@ -19,65 +19,70 @@
 #define SIZE 5    // number of employees to process
 
 /* function declaration */
+void payrollcalc(int clockNumber , float hourlyWage, float workhourse);
+void otpay(int clockNumber , float hourlyWage, float workhourse);
+void nonotpay(int clockNumber , float hourlyWage, float workhourse);
 
-void payrollcalc(int a, float b, float c);
 
 int main()
 {
-     float Over_time = 0.0 ;
-    /* unique employee identifier */
-  long int clockNumber [] = {98401, 526488, 765349, 34645, 127615};
-
-   /* hourly wage for each employee */        
-   float hourlyWage [] = {10.60, 9.75, 10.50, 12.25, 8.35};
-  
-  /* working hourse for each employee */
-  float workhourse [] = {51.0, 42.5, 37.0, 45.0, 0.0}; 
-   printf("\n");
-   printf("----------------------------------------------------------------------\n");
-   printf("    Clock#   Wage     Hours     OT    Gross\n");
-   printf("----------------------------------------------------------------------\n");
-   
-   for( int i = 0; i < SIZE; ++i) {  
-       //Passing array element clockNumber ,hourlyWage , workhourse.
-       payrollcalc(clockNumber[i],hourlyWage[i], workhourse[i]);  
-               
-        } // end of for loop
-   return 0;
+ /* clock number for each employee */   
+ int clockNumber  [] = {98401, 526488, 765349, 34645, 127615};
+ /* hourly wage for each employee */
+ float hourlyWage [] = {10.60, 9.75, 10.50, 12.25, 8.35};
+ /* working hourse for each employee */
+ float workhourse [] = {51.0, 42.5, 37.0, 45.0, 0.0};
+/* REPORT LAYOUT  */
+printf("\n");
+printf("----------------------------------------------------------------------\n");
+printf("    Clock#   Wage    Hours   OT   Gross\n");
+printf("----------------------------------------------------------------------\n");
+for( int i = 0; i < SIZE; ++i) {
+/* Passing array element clockNumber ,hourlyWage , workhourse. */
+    payrollcalc(clockNumber[i] , hourlyWage[i], workhourse[i]); 
+}  // end of for loop
+printf("\n");
+return 0;
+} // end of main function.
+void payrollcalc(int clockNumber , float hourlyWage, float workhourse)
+{
+/* check over time */    
+if (workhourse > STD_HOURS) {
+    otpay(clockNumber , hourlyWage, workhourse);
+}else{   
+    nonotpay(clockNumber , hourlyWage, workhourse);
 }
+}
+/* This function calculate over time and Gross pay using clockNumber, hourlyWage, workhourse */
+void otpay(int clockNumber , float hourlyWage, float workhourse)
+{
+/*initialization of local variable   */    
+float Over_time = 0.0;
+float overtime_pay = 0.0;
+float standard_pay = 0.0;
+float gross = 0.0;
 
-// function to calculate the Gross pay
-void payrollcalc(int a, float b, float c)
-   {   
-    /*initialization of  */ 
-    float Over_time = 0.0;
-    float overtime_pay = 0.0;
-    float gross = 0.0;
-    float standard_pay = 0.0;
+Over_time = workhourse - STD_HOURS;
+overtime_pay = hourlyWage * SOT_PAY * Over_time;
 
-    if (c > STD_HOURS) {
-   // calculate over time                
-        Over_time = c - STD_HOURS;
-   // calculate standard pay
-        standard_pay = b * STD_HOURS ;  
-   // calculate over time pay            
-        overtime_pay = b * SOT_PAY * Over_time;
-   // calculate gross pay                  
-        gross = overtime_pay + standard_pay ;  
-                            
-        printf("    %06d  %5.2f   %5.1f    %5.1f    %6.2f", a, b, c, Over_time, gross);
-        printf("\n");
-                      
-          }  else {
-              
-        Over_time = 0.0;
-              
-        standard_pay = c * b;           
-        overtime_pay = b * SOT_PAY * Over_time;  
-              
-        gross = overtime_pay + standard_pay;
-        printf("    %06d  %5.2f   %5.1f    %5.1f    %6.2f", a, b, c, Over_time, gross);
-        printf("\n");
+standard_pay = hourlyWage * STD_HOURS;
+gross = overtime_pay + standard_pay ;
 
-     }
+printf("    %06d  %5.2f   %5.1f  %5.1f  %6.2f", clockNumber , hourlyWage, workhourse, Over_time, gross);
+printf("\n");
+}
+/* calculate and Gross pay and for zero over time */
+void nonotpay(int clockNumber , float hourlyWage, float workhourse)
+{
+float Over_time = 0.0;
+float overtime_pay = 0.0;
+float standard_pay = 0.0;
+float gross = 0.0;   
+ 
+standard_pay = workhourse * hourlyWage;
+overtime_pay = hourlyWage * SOT_PAY * Over_time;
+gross = overtime_pay + standard_pay;
+ 
+printf("    %06d  %5.2f   %5.1f  %5.1f  %6.2f", clockNumber , hourlyWage, workhourse, Over_time, gross);
+printf("\n");
 }

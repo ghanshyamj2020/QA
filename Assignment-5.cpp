@@ -19,16 +19,18 @@
 #include<stdio.h>
 #define STD_HOURS 40.0
 #define SOT_PAY  1.5
-#define SIZE 5 
+#define SIZE 5
+ 
 struct employee 
     {
         int id_number;  /* or just int id_number; */
         float wage;
         float hours;
-        
+        float overtime;
+        float gross;
     };    
 
-/* function declaration *
+/* function declaration */
 void payrollcalc(struct employee st);
 void otpay(struct employee st2);
 void nonotpay(struct employee st2);
@@ -38,7 +40,7 @@ int main()
 {
 // struct employee st1;
 
-struct employee  st1[SIZE];
+struct employee  st1;
 
  /* REPORT LAYOUT  */
   
@@ -46,20 +48,20 @@ printf("\n");
 printf("----------------------------------------------------------------------\n");
 printf("     Clock#  Wage  Hours     OT   Gross\n");
 printf("----------------------------------------------------------------------\n");
-for(int i=0;i<1;i++){
-    
-  payrollcalc(st1[i]);
-}  // end of for loop
-  return 0;
+
+payrollcalc(st1);    // call the function
+
+ return 0;
 } // end of main program
 
-// *******************************************
+// function payrollcalc started 
 void payrollcalc(struct employee st)
 { 
-struct employee  st2[5] ={98401, 10.60, 51.0, 526488,9.75,42.5,765349, 10.50, 37.0, 34645, 12.25,45.0,127615 ,8.35,0.0};
+struct employee  st2[5] ={98401, 10.60, 51.0,0.0,0.0, 526488,9.75,42.5,0.0,0.0,765349, 
+    10.50, 37.0,0.0,0.0, 34645, 12.25,45.0,0.0,0.0,127615 ,8.35,0.0,0.0,0.0,};
 
 /* check over time */
-for(int j=0;j<5;j++){
+for(int j=0;j<SIZE;j++){
 
 if (st2[j].hours > STD_HOURS) {
 
@@ -70,42 +72,40 @@ otpay(st2[j]);
 nonotpay(st2[j]);  
  }
  
-    
 }
 
-    
-}
-// Gross pay calculation with over time function 
+} // function payrollcalc ended
+
+// Gross pay calculation with over time function otpay started 
 void otpay(struct employee  st2) {
   
 /*initialization of local variable   */    
-float Over_time = 0.0;
+
 float overtime_pay = 0.0;
 float standard_pay = 0.0;
-float gross = 0.0;
 
-Over_time = st2.hours - STD_HOURS;
-overtime_pay = st2.wage * SOT_PAY * Over_time;
+
+st2.overtime = st2.hours - STD_HOURS;
+overtime_pay = st2.wage * SOT_PAY * st2.overtime;
 
 standard_pay = st2.wage * STD_HOURS;
-gross = overtime_pay + standard_pay ;
+st2.gross = overtime_pay + standard_pay ;
 
-printf("    %06d  %5.2f   %5.1f  %5.1f  %6.2f", st2.id_number , st2.wage, st2.hours, Over_time, gross);
+printf("    %06d  %5.2f   %5.1f  %5.1f  %6.2f", st2.id_number , st2.wage, st2.hours, st2.overtime, st2.gross);
 printf("\n");
-}
+} // Gross pay calculation with over time function otpay ended
 
-// over time calculation with zero over time function  
+// over time calculation with zero over time function nonotpay started 
 void nonotpay(struct employee  st2) {
-float Over_time = 0.0;
+
 float overtime_pay = 0.0;
 float standard_pay = 0.0;
-float gross = 0.0;   
- 
+
 standard_pay = st2.hours * st2.wage;
 overtime_pay = (st2.wage * SOT_PAY * 0);
-gross = overtime_pay + standard_pay;
+st2.gross = overtime_pay + standard_pay;
 
-printf("    %06d  %5.2f   %5.1f  %5.1f  %6.2f", st2.id_number , st2.wage, st2.hours, Over_time, gross);
+printf("    %06d  %5.2f   %5.1f  %5.1f  %6.2f", st2.id_number , st2.wage, st2.hours, st2.overtime, st2.gross);
 printf("\n");
 
-}    
+} // over time calculation with zero over time function nonotpay ended   

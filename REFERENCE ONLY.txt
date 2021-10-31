@@ -1,0 +1,463 @@
+1) Use the link below for the background needed to create two functions that work with a Triangle
+https://www.mathsisfun.com/triangle.html
+a) Write a function that will return the area of a triangle
+b) Write a function that will return the perimeter of a triangle
+----------------------------------------------------------------
+a) Write a function that will return the area of a triangle
+
+/* Write a function that will return the area of a triangle */
+
+#include<stdio.h>
+#include<math.h>
+// proto type function deceleration 
+float AreaofaTriangle(float, float);
+
+// main function started
+int main()
+{
+   float b, h, Area;
+ 
+   printf("\n Please Enter the base and height of triangle\n");
+   scanf("%f%f",&b,&h);
+ 
+   Area = AreaofaTriangle(b, h);   // call the function
+   printf("\nArea of triangle = %.2f\n", Area);
+ 
+   return 0;
+} // main function ended  
+ 
+//  function  AreaofaTriangle started 
+float AreaofaTriangle( float b, float h)
+{
+   float s, Area;
+ // Area calcualtion
+   Area = (b * h)/2;
+   
+   return Area;
+} //  function  Area of aTriangle ended 
+-------------------------------------------------------------------------
+b) Write a function that will return the perimeter of a triangle
+
+/* Write a function that will return the perimeter of a triangle */
+
+#include<stdio.h>
+#include<math.h>
+ 
+float PerimeterofaTriangle(float, float, float);
+ 
+int main()
+{
+   float a, b, c, Perimeter;
+ 
+   printf("\n Please Enter the three sides of triangle\n");
+   scanf("%f%f%f",&a,&b,&c);
+ 
+   Perimeter = PerimeterofaTriangle(a, b, c);
+   printf("\nPerimeter of triangle = %.2f\n", Perimeter);
+ 
+   return 0;
+}
+ 
+float PerimeterofaTriangle( float a, float b, float c )
+{
+   float s, Perimeter;
+ 
+   Perimeter = (a+b+c)/2;
+   
+   return Perimeter;
+}
+====================================================================================
+2) Write a function int frequency (int theArray [ ], int n, int x)
+
+#include<stdio.h>
+
+int frequency(int a[], int n, int x)
+{
+    int count = 0;
+    for (int i=0; i < n; i++)
+       if (a[i] == x)
+          count++;
+    return count;
+}
+ 
+// Driver program
+int main() {
+    int a[] = {0, 5, 5, 5, 4};
+    int x = 5;
+    int n = sizeof(a)/sizeof(a[0]);
+    printf("%d", frequency(a, n, x));
+    return 0;
+}
+
+====================================================================================
+3a) (Function) Represent the mathematical operation: max (v, w, x, y, z) as a C function. This is, write a function that is
+passed 5 integer values that returns the largest value of those four parameters. For example, max (5, 2, 7, 4, 1) would
+return 7 since it is the largest value of the five parameters.
+------------------------------------------------------------------------------------------
+
+#include<stdio.h>
+// function prototype, also called function declaration
+int maxf( int a , int b, int c, int d, int e);                               
+// main function, program starts from here
+ 
+int main( )               
+{
+    int a; 
+    int b; 
+    int c; 
+    int d; 
+    int e;
+    printf ( "\nEnter some number for finding max number \n");
+    scanf ("%d%d%d%d%d", &a ,&b ,&c ,&d , &e) ;
+    // function call
+    maxf ( a ,b ,c ,d , e ) ;                      
+    
+}
+ 
+// max value calcute function started  
+int maxf( int a , int b, int c, int d, int e)   
+{  
+    
+    if (a >= b && a >= c && a >= d && a >= e)
+        printf("%d is the largest number.", a);
+  
+    if (b >= a && b >= c && b >= d && b >= e)
+        printf("%d is the largest number.", b);
+  
+    if (c >= a && c >= b && c >= d && c >= e)
+        printf("%d is the largest number.", c);
+        
+    if (d >= a && d >= b && d >= c && d >= e)
+        printf("%d is the largest number.", d);    
+    
+    if (e >= a && e >= b && e >= d && e >= c)
+        printf("%d is the largest number.", e); 
+} // max value calcute function ended
+=================================================================================================
+3b)(Code Segment) Rewrite the mathematical operation: max (v, w, x, y, z) as
+a single statement using the conditional expression operator.
+For example, max (x, y) would be:
+max = (x > y) ? x : y;
+----------------------------------------------------------------------------------------------
+#include<stdio.h>
+
+// function prototype, also called function declaration
+int maxf( int a , int b, int c, int d, int e);                               
+// main function, program starts from here
+ 
+int main( )               
+{
+    int a; 
+    int b; 
+    int c; 
+    int d; 
+    int e;
+    printf ( "\nEnter some number for finding square \n");
+    scanf ("%d%d%d%d%d", &a ,&b ,&c ,&d , &e) ;
+    // function call
+    maxf ( a ,b ,c ,d , e ) ;                      
+    
+}
+// main function, program ended here 
+
+// max value calculation function started
+int maxf( int a , int b, int c, int d, int e)   
+{  
+    int largest;
+    
+    largest = a > b ? (a > c ? a : c) : (b > c ? b : c);
+    
+    printf("%d is the largest number.", largest);
+}
+// max value calculation function ended
+
+===================================================================================================================
+4) Given the following test scores and grade equivalents, write a function
+which is passed a score, and returns a letter grade based on the score entered. It should
+also check for invalid values (a number less than 0 or greater than 100) and return an 'I' in that case.
+Score Grade
+------ -----
+90-100 A
+80-89 B
+70-79 C
+60-69 D
+0 -59 F
+---------------------------------------------------------------
+
+#include<stdio.h>
+
+// function prototype, also called function declaration
+float maxf( float avg );                               
+// main function, program starts from here
+ 
+int main( )               
+{
+    float avg; 
+    
+    printf ( "\nEnter marks  \n");
+    scanf ("%f", &avg) ;
+    // function call
+    maxf (avg) ;                      
+    
+}
+
+// grade equivalant  function calculation started
+float maxf( float avg )   
+{  
+    if (avg >= 100 && avg < 90 )
+       printf ("A");
+       
+    if (avg >= 80 && avg < 90 )
+       printf ("B");
+       
+    if (avg >= 70 && avg <  79 )
+       printf ("C");
+       
+    if (avg >= 60 && avg < 70 ) 
+       printf("D");
+       
+    if (avg > 0 && avg < 60 ) 
+       printf("F");
+    
+    if (avg < 0 || avg > 100 ) 
+       printf("I");
+      
+   
+} // grade equivalant  function calculation ended
+
+===============================================================================================================================
+5) Write a function that is passed an array of characters containing letter grades
+of A, B, C, D, and F, and prints a report that shows the total number
+of occurrences of each letter grade. Your function should accept both lower
+and upper case grades, for example, both 'b' and 'B' should be bucketed into
+your running total for B grades. Any grade that is invalid should be bucketed
+
+char grades [ ] = {'A', ', 'b', 'C', 'x', 'D', 'c', 'F', 'B', 'Y', 'B', 'B', 'A'};
+------------------------------------------------------------------------------
+
+#include <stdio.h>
+#include <string.h>
+#define MAX 100
+#define eod 13
+
+// function declaration  
+void charcount(char grades[]);
+
+int main()
+{
+    
+    //declaration of array
+    char grades[MAX] = {'A','i','b', 'C', 'i', 'D', 'c', 'F', 'B', 'Y', 'B', 'B', 'A','\0'};
+        
+    charcount(grades);
+return 0;    
+}  // end of main program  
+
+//start function array of characters containing letter grades 
+void charcount(char grades[]) {
+    int j = 0;
+    int k = 0;
+    int l = 0;
+    int m = 0;
+    int n = 0;  
+    int i = 0;
+    int count = 0 ; 
+    
+    
+    while (count <= eod) {
+       switch(grades[count]) 
+           {
+              case'A':
+              case'a':
+                  i++;
+              break;
+              case'B':
+              case'b':
+                  j++;
+              break;
+              case'C':
+              case'c':
+                  k++;
+              break;
+              case'D':
+              case'd':
+                  l++;
+              break;
+              case'F':
+              case'f':
+                  m++;
+              break;
+              case'I':
+              case'i':
+                  n++;
+              break;
+              
+    }
+    count++; //end of while loop
+    } 
+    printf("Grade  Total\n");
+    printf("-----  ------\n");
+    printf("A        %d\n", i);
+    printf("B        %d\n", j);
+    printf("C        %d\n", k);
+    printf("D        %d\n", l);
+    printf("F        %d\n", m);
+    printf("I        %d\n", n);
+} //end function array of characters containing letter grades
+
+==================================================================================================
+6) It's a World Cup year! To celebrate, FIFA (Fédération Internationale de Football Association) has asked
+you to write a program that will calculate various offensive and defensive statistics.
+To get started, go to the following URL to familiarize yourself with various common soccer statistics.
+https://www.meracalculator.com/sports/football-statics.php
+Below are a combination of formulas to determine four common Defense and three Offense statistics. Your job here
+is to develop and call functions that when passed specific information, will return a information within a
+structure. FIFA would like at least two functions, one that will calculate and return defensive statistics and
+another similar one of offensive statistics.
+
+Defense
+Goalie Games Won Percentage = Games Won / (Games Won + Games Lost)
+Goalie Saves = Shots on Goal - Goal Scored
+Saves Percentage = Goalie Saves / Shots on Goal
+Saves Ratio = Shots On Goal / Goalie Saves
+
+Offense
+Scoring Percentage = (Scoring Attempts - Goals Scored ) / Scoring Attempts
+Scoring Ratio = Shots On Goal / Goals Scored
+Games Won Percentage = Team Games Won / ( Team Games Won + Team Games Lost )
+
+Review the example in it that provides the following inputs which I pasted below. This will provide test data and an idea of what to pass to your
+functions.
+functions.
+Defense team:
+Shots on Goal = 5
+Goals Scored = 2
+Games won in Goal = 1
+Games Lost in Goal = 1
+Offense Team:
+Scoring Attempts (shots on goal) = 7
+Goals Scored = 3
+Team Games Won = 3
+Team Games Lost = 4
+In summary, write a program that has at least two functions that can be called. Use the information above to determine the parameter types and
+information returned in a structure for each function. Call these functions from a main function using the example information above. No need
+to prompt for any values, for this exam, just pass in the values. You do not have to worry about printing the information out, you are welcome to
+do that on your own to verify your work, but it is not required and will not be factored into the scoring of this question.
+------------------------------------------------------------------------
+#include <stdio.h>
+void Defenseteam();  // call Defense team function
+void OffenseTeam();  // call Offense Team function
+
+// main function start
+void main(){
+    
+    
+    Defenseteam();  // call Defense team function
+    OffenseTeam(); // call Offense Team function
+} // main function end
+
+//Defense team function start 
+void Defenseteam() {
+    
+float  ShotsOnGoal = 5;
+float  GoalScored  = 2;
+float  GamesWon    = 1;
+float  GamesLost   = 1;
+
+//Defense team Calculation 
+float GoalieGamesWonPercentage = GamesWon / (GamesWon + GamesLost);
+float GoalieSaves = ShotsOnGoal - GoalScored;
+float SavesPercentage = GoalieSaves / ShotsOnGoal;
+float SavesRatio = ShotsOnGoal / GoalieSaves;
+
+printf("Defense Calculation Results\n");
+printf("Goalie Games Won Percentage %.3f\n", GoalieGamesWonPercentage);
+printf("Goalie Saves %.0f \n", GoalieSaves);
+printf("Saves Percentage %.3f \n", SavesPercentage);
+printf("Saves Ratio 1 in %.3f  \n", SavesRatio);
+printf("\n");
+printf("\n");
+
+} //Defense team function end
+
+//Offense team function start
+void OffenseTeam() {
+ float    ScoringAttempts = 7;
+ float    ShotsOnGoal     = 7;
+ float    GoalsScored     = 3;
+ float    TeamGamesWon    = 3;
+ float    TeamGamesLost   = 4;
+
+// Offense team Calculation
+float ScoringPercentage = ((ScoringAttempts - GoalsScored)  / ScoringAttempts);
+float ScoringRatio = (ShotsOnGoal / GoalsScored);
+float GamesWonPercentage = TeamGamesWon / ( TeamGamesWon + TeamGamesLost);
+
+printf("Offense Calculation Results\n");
+printf("Scoring Percentage %.3f \n", ScoringPercentage);
+printf("Scoring Ratio 1 in %.3f  \n", ScoringRatio);
+printf("Games Won Percentage %.3f \n", GamesWonPercentage);
+
+} //Offense team function end	
+==================================================================================================
+7) Write a function that raises an integer to a positive integer power. Call the function x_to_the_n, taking two integer arguments x and n.
+Have the function return a long int, which represents the results of
+calculating x to the nth power. Do not use the C pow library function.
+Example: if x = 3 and n = 2, the function would return 9.
+NOTE: Do not use recursion (since that version is in your lecture notes).
+---------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+// proto type function deceleration
+int power(int base, int exponent);
+// main program start  
+int main() {
+
+int base, exponent;
+
+printf("Enter a base number: ");
+scanf("%d", &base);
+printf("Enter an exponent: ");
+scanf("%d", &exponent);
+
+int res = power(base, exponent);
+
+printf("Answer = %d", res);
+return 0;
+} // main program end
+
+// Power function start
+
+int power(int base, int exponent){
+
+int result=1;
+for(exponent; exponent>0; exponent--){
+result = result * base;
+}
+return result;
+} // Power function start
+==============================================================================================================
+8) (Code Segment)
+Provide the code need to DECLARE an array of structures that could store information about a group of passports. Do not write a program or
+worry about initializing the structure, all I am looking for is a set of structure types whose combined members would hold all the information
+found in a Passport, AND any supporting structures. Be careful on how you declare the members of a structure. Grading will be based on the
+flexibility of your design (i.e., define many structures and have structures within structures if necessary).
+To figure out what information you need to collect, search on line for sample images of US Passports. NOTE: Don't go overboard such as having
+a structure with only one member just to create many structures.
+---------------------------------------------------------------------------------------
+
+struct passport
+{   
+    char type[1];
+    char code[5];
+    char PassportNo[8];
+    char name[20];
+    char Nationality[15];
+    char  DOB[15];
+    char  placeofbirth[20]; 
+    char  dateofissue[15];
+    char  dateofexpire[15];
+    char sex char[1];
+    char departmentofstate[15];
+    char machinereadabledata[45];
+        
+}passportdetail[100];
